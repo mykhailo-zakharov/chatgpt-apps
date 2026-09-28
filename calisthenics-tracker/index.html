@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111827"><title>Calisthenics Tracker</title><link rel="stylesheet" href="./styles.css"></head>
+<body><div class="app">
+<header class="header"><div><h1>Calisthenics Tracker</h1><p>Your home workout plan</p></div><section class="inline-timer" aria-label="Rest timer"><div class="timer-title">Rest</div><div id="timerDisplay" class="timer-display">01:30</div><div class="timer-presets"><button class="timer-preset" data-seconds="30" type="button">30s</button><button class="timer-preset" data-seconds="60" type="button">1m</button><button class="timer-preset" data-seconds="90" type="button">1m30</button><button class="timer-preset" data-seconds="120" type="button">2m</button></div><div class="timer-actions"><button id="timerStart" class="timer-start" type="button">Start</button><button id="timerReset" class="timer-reset" type="button" hidden>Reset</button></div></section></header>
+<section class="difficulty-panel" aria-label="Workout difficulty"><div class="difficulty-heading"><strong>Difficulty</strong><span id="difficultyDescription"></span></div><div id="difficultyPicker" class="difficulty-picker"></div></section>
+<nav id="tabs" class="tabs" aria-label="Workout days"></nav>
+<section id="stats" class="stats"></section>
+<main id="workout"></main>
+</div><script src="./app.js"></script></body></html>
