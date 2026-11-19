@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>Planche Academy</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#eef2f7;background:#0b1220;font-synthesis:none;--panel:#131e30;--panel2:#19263a;--muted:#9aabc1;--line:#29384e;--accent:#a3e635;--accent2:#d9f99d;--blue:#7dd3fc}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 80% -10%,#233c53 0,transparent 38%),#0b1220}
+button,input,textarea{font:inherit}button{cursor:pointer}.shell{width:min(1040px,calc(100% - 32px));margin:auto;padding:28px 0 56px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}.brand{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--accent)}.top a{color:var(--muted);text-decoration:none;font-size:13px}
+.hero{padding:30px;border:1px solid #33445b;border-radius:24px;background:linear-gradient(125deg,#1b2b40,#142033 65%,#1d3041);display:flex;justify-content:space-between;gap:24px;align-items:center}.hero h1{font-size:clamp(34px,6vw,58px);line-height:1;margin:10px 0 12px;letter-spacing:-.045em}.hero p{max-width:590px;color:#b9c7d8;line-height:1.6;margin:0}.hero-mark{width:116px;height:116px;flex:none;border:1px solid #6b8b4b;border-radius:28px;display:grid;place-items:center;font-size:56px;background:#a3e63512}
+.eyebrow{font-size:11px;letter-spacing:.14em;color:var(--accent);font-weight:800;text-transform:uppercase}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}.stat,.panel{border:1px solid var(--line);border-radius:17px;background:#111c2d;padding:17px}.stat span{display:block;color:var(--muted);font-size:12px}.stat strong{display:block;font-size:25px;margin-top:5px}.progress{height:7px;background:#29384e;border-radius:9px;overflow:hidden;margin-top:12px}.progress i{display:block;height:100%;background:var(--accent);width:0;transition:width .2s}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:28px 0 12px}.section-head h2{margin:0;font-size:21px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.controls{display:flex;flex-wrap:wrap;gap:8px}.pill,.tab,.week-btn{border:1px solid var(--line);background:#142135;color:#cbd5e1;border-radius:12px;padding:10px 14px}.pill.active,.tab.active,.week-btn.active{background:var(--accent);border-color:var(--accent);color:#15210b;font-weight:800}
+.weeks{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}.week-btn{padding:10px 4px;font-size:12px}.week-btn.done:after{content:" ✓";color:inherit}
+.phase{margin-top:10px;padding:14px 16px;border:1px solid #3c512b;background:#182616;border-radius:14px;color:#d9f99d;font-size:13px;line-height:1.5}
+.day-tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{text-align:left;min-width:112px}.tab small{display:block;opacity:.72;font-size:11px;margin-top:3px}
+.session-intro{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:18px 0 12px}.session-intro h3{margin:0;font-size:20px}.session-intro p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.exercise-list{display:grid;gap:10px}.exercise{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:16px}.exercise.done{border-color:#547a2e;background:#142319}.ex-head{display:flex;gap:12px;align-items:flex-start}.check{width:23px;height:23px;accent-color:var(--accent);flex:none;margin-top:2px}.ex-main{flex:1;min-width:0}.ex-main h4{margin:0;font-size:16px}.target{color:var(--accent2);font-weight:700;font-size:13px;margin-top:5px}.ex-number{font-size:11px;color:#7890aa;font-weight:800}.ex-desc{color:#b4c2d3;font-size:13px;line-height:1.55;margin:12px 0 0 35px}.ex-meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0 35px}.tag{font-size:11px;color:#b9c7d8;border:1px solid #34445b;border-radius:20px;padding:4px 8px}.notes{width:calc(100% - 35px);margin:12px 0 0 35px;background:#0c1727;color:#e5edf7;border:1px solid #34445b;border-radius:9px;padding:9px 10px;font-size:12px;resize:vertical;min-height:38px}
+.timer{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.timer strong{font-size:26px;font-variant-numeric:tabular-nums;min-width:76px}.timer button{border:1px solid var(--line);background:#1a2940;color:#e5edf7;border-radius:9px;padding:8px 11px}.timer .go{background:var(--accent);color:#14210a;border-color:var(--accent);font-weight:800}
+.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tool-title{font-size:14px;font-weight:800;margin:0 0 10px}.small{font-size:12px;color:var(--muted);line-height:1.55}
+.test-list{display:grid;gap:9px}.test-row{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:#d8e2ed}.test-row input{accent-color:var(--accent);margin-top:2px}
+.footer{margin-top:26px;color:#71849d;font-size:12px;line-height:1.6;text-align:center}
+@media(max-width:650px){.shell{width:min(100% - 22px,1040px);padding-top:16px}.hero{padding:22px}.hero-mark{width:64px;height:64px;font-size:32px;border-radius:18px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:span 2}.weeks{grid-template-columns:repeat(6,1fr)}.tools-grid{grid-template-columns:1fr}.session-intro{align-items:flex-start;flex-direction:column}.tab{flex:1;min-width:calc(50% - 8px)}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="top"><div class="brand">MY TRAINING SPACE / SKILL TRACKER</div><a href="../">← Усі апки</a></div>
+  <header class="hero"><div><div class="eyebrow">12-тижнева програма · без обладнання</div><h1>Planche<br>Academy</h1><p>Твій тренувальний маршрут від базової підготовки до перших стабільних секунд Tuck Planche та подальшого руху до Full Planche.</p></div><div class="hero-mark">↗</div></header>
+  <section class="stats">
+    <div class="stat"><span>Виконання цього тижня</span><strong id="weekProgress">0%</strong><div class="progress"><i id="weekBar"></i></div></div>
+    <div class="stat"><span>Завершено вправ</span><strong id="doneCount">0</strong></div>
+    <div class="stat"><span>Поточний етап</span><strong id="phaseShort" style="font-size:18px">База</strong></div>
+  </section>
+  <div class="section-head"><div><h2>Твій 12-тижневий маршрут</h2><p>Обирай тиждень, щоб переглянути фокус і контрольні цілі.</p></div></div>
+  <div class="weeks" id="weeks"></div><div class="phase" id="phaseText"></div>
+  <div class="section-head"><div><h2>Тренування</h2><p>3 заняття на тиждень · чергуй силу та техніку.</p></div></div>
+  <nav class="day-tabs" id="dayTabs">
+    <button class="tab active" data-day="A1">Понеділок<small>Сила A</small></button>
+    <button class="tab" data-day="B">Середа<small>Техніка B</small></button>
+    <button class="tab" data-day="A2">П'ятниця<small>Сила A</small></button>
+  </nav>
+  <div class="session-intro"><div><h3 id="sessionTitle">Planche Strength A</h3><p id="sessionSub">Плечі · трицепси · контроль лопаток · 35–45 хв</p></div><div class="timer"><strong id="clock">02:00</strong><button data-time="60">1 хв</button><button data-time="120">2 хв</button><button data-time="180">3 хв</button><button class="go" id="timerToggle">Старт</button><button id="timerReset">Скинути</button></div></div>
+  <div class="exercise-list" id="exerciseList"></div>
+  <div class="section-head"><div><h2>Контрольна точка</h2><p>Відмічай навички, коли виконуєш їх чисто, без болю та компенсацій.</p></div></div>
+  <div class="tools-grid">
+    <section class="panel"><h3 class="tool-title">Технічні критерії</h3><div class="test-list" id="tests"></div></section>
+    <section class="panel"><h3 class="tool-title">Правила прогресії</h3><p class="small">• Спершу якість позиції, потім тривалість.<br>• Збільшуй нахил або час поступово, не все одночасно.<br>• Переходь до складнішої варіації лише після стабільного контролю поточної.<br>• Залишай 1–2 повторення в запасі. Не тренуйся через біль.</p><p class="small"><b>Важливо:</b> строки 4/8/12 тижнів є орієнтирами, а не дедлайнами. Якщо форма погіршується, повтори поточний етап.</p></section>
+  </div>
+  <p class="footer">Прогрес зберігається локально в цьому браузері на цьому пристрої. Якщо очистити дані сайту або змінити пристрій, записи можуть зникнути. При болю в зап'ястях, ліктях чи плечах зупини вправу та дай суглобам відновитися.</p>
+</div>
+<script>
+const sessions={
+ A1:{title:"Planche Strength A",sub:"Плечі · трицепси · контроль лопаток · 35–45 хв",items:[
+ ["Розминка зап'ясть","3–4 хв","Плавні кола, перенесення ваги вперед-назад на долонях. Без болю.","Підготовка"],
+ ["Planche Lean","4 × 15–20 сек","Прямі лікті, пальці широко, плечі поступово виходять за лінію зап'ясть. Активно відштовхуй підлогу, лопатки розведені.","Відпочинок 2–3 хв"],
+ ["Pseudo Planche Push-ups","3 × 6–10","Долоні біля талії настільки, наскільки комфортно. Плечі нахилені вперед, корпус напружений, рух контрольований.","Відпочинок 2 хв"],
+ ["Scapular Push-ups","3 × 12–15","Руки прямі. Рухай лопатками: розводь їх у верхній точці та повертай контрольовано.","Відпочинок 60–90 сек"],
+ ["Hollow Body Hold","3 × 25–40 сек","Поперек притиснутий до підлоги, ребра зібрані, ноги й плечі підняті. Полегши вправу, зігнувши коліна.","Відпочинок 60 сек"]
+ ]},
+ B:{title:"Planche Technique B",sub:"Баланс · форма · контроль тіла · 30–40 хв",items:[
+ ["Розминка зап'ясть і плечей","4–5 хв","М'яка мобілізація зап'ясть, плечей і лопаток. Поступово готуйся до опори.","Підготовка"],
+ ["Frog Stand","4 × 15–30 сек","Коліна спираються на руки. Перенось вагу вперед і тримай погляд трохи попереду долонь. Виходь із позиції контрольовано.","Відпочинок 90 сек"],
+ ["Tuck Planche Attempts","5 × 3–8 сек","Пробуй відірвати ноги від підлоги, коліна підтягнуті до грудей. Прямі лікті, плечі вперед, лопатки розведені. Якщо не виходить, роби Frog Stand.","Відпочинок 2–3 хв"],
+ ["Planche Lean","3 × 15 сек","Легший технічний варіант. Зосередься на стабільній лінії плечей і активних лопатках.","Відпочинок 90 сек"],
+ ["Push-up Plus","3 × 12","У верхній точці відштовхни підлогу ще далі, розводячи лопатки. Не згинай лікті.","Відпочинок 60 сек"],
+ ["Straight Leg Raises","3 × 10–15","Лежачи на спині, підіймай ноги контрольовано. Не дозволяй попереку відриватися від підлоги.","Відпочинок 60 сек"]
+ ]},
+ A2:{title:"Planche Strength A",sub:"Повтор силової сесії · не працюй до відмови · 35–45 хв",items:[
+ ["Розминка зап'ясть","3–4 хв","Плавні кола та легкі перенесення ваги на долонях. Без болю.","Підготовка"],
+ ["Planche Lean","4 × 15–20 сек","Зберігай однакову техніку в кожному підході. Якщо форма ламається, зменш нахил.","Відпочинок 2–3 хв"],
+ ["Pseudo Planche Push-ups","3 × 6–10","Контрольований темп, лікті спрямовані назад під комфортним кутом, плечі нахилені вперед.","Відпочинок 2 хв"],
+ ["Scapular Push-ups","3 × 12–15","Прямі руки, активна робота лопаток без провисання корпуса.","Відпочинок 60–90 сек"],
+ ["Hollow Body Hold","3 × 25–40 сек","Поперек притиснутий, живіт напружений, дихай рівно.","Відпочинок 60 сек"]
+ ]}
+};
+const phases=[
+["Тижні 1–4 · Базова підготовка","Розвивай силу плечей, адаптуй зап'ястя до навантаження та відпрацюй Planche Lean. Не поспішай із довгими спробами Tuck Planche."],
+["Тижні 5–8 · Tuck Planche","Поступово додавай спроби Tuck Planche, якщо можеш утримувати активні плечі та прямі лікті. Працюй короткими якісними підходами."],
+["Тижні 9–12 · Закріплення та Advanced Tuck","Збільшуй час чистого Tuck Planche. Advanced Tuck пробуй лише якщо базова позиція стабільна, без болю та втрати контролю."]
+];
+const testItems=["Planche Lean 20 секунд із прямими руками та активними лопатками","10 Scapular Push-ups без згинання ліктів","8 якісних Pseudo Planche Push-ups","Hollow Body Hold 30 секунд із притиснутим попереком","Tuck Planche 5 секунд із чистою позицією"];
+const key="planche-academy-v1";
+let state={week:1,day:"A1",checks:{},notes:{},tests:{}};
+try{const saved=JSON.parse(localStorage.getItem(key)||"null");if(saved)state={...state,...saved}}catch(e){}
+const save=()=>{try{localStorage.setItem(key,JSON.stringify(state))}catch(e){};renderStats()};
+const phaseIndex=()=>state.week<=4?0:state.week<=8?1:2;
+const id=(day,i)=>day+"-"+i;
+function renderWeeks(){const el=document.getElementById("weeks");el.innerHTML="";for(let w=1;w<=12;w++){const b=document.createElement("button");b.className="week-btn"+(state.week===w?" active":"");b.textContent=w;b.setAttribute("aria-label","Тиждень "+w);b.onclick=()=>{state.week=w;save();renderWeeks();renderSession()};el.append(b)}const p=phases[phaseIndex()];document.getElementById("phaseText").innerHTML="<b>"+p[0]+"</b><br>"+p[1];document.getElementById("phaseShort").textContent=phaseIndex()===0?"База":phaseIndex()===1?"Tuck":"Закріплення"}
+function renderSession(){document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.day===state.day));const s=sessions[state.day];document.getElementById("sessionTitle").textContent=s.title;document.getElementById("sessionSub").textContent=s.sub;const list=document.getElementById("exerciseList");list.innerHTML="";s.items.forEach((x,i)=>{const k=id(state.day,i),done=!!state.checks[k],article=document.createElement("article");article.className="exercise"+(done?" done":"");const head=document.createElement("div");head.className="ex-head";const cb=document.createElement("input");cb.type="checkbox";cb.className="check";cb.checked=done;cb.setAttribute("aria-label","Виконано: "+x[0]);cb.onchange=()=>{state.checks[k]=cb.checked;save();renderSession()};const main=document.createElement("div");main.className="ex-main";const h=document.createElement("h4");h.textContent=x[0];const target=document.createElement("div");target.className="target";target.textContent=x[1];main.append(h,target);const num=document.createElement("div");num.className="ex-number";num.textContent=String(i+1).padStart(2,"0");head.append(cb,main,num);const desc=document.createElement("p");desc.className="ex-desc";desc.textContent=x[2];const meta=document.createElement("div");meta.className="ex-meta";const tag=document.createElement("span");tag.className="tag";tag.textContent=x[3];meta.append(tag);const note=document.createElement("textarea");note.className="notes";note.placeholder="Нотатка: фактичний час, повторення або відчуття…";note.value=state.notes[k]||"";note.oninput=()=>{state.notes[k]=note.value;try{localStorage.setItem(key,JSON.stringify(state))}catch(e){}};article.append(head,desc,meta,note);list.append(article)})}
+function renderTests(){const el=document.getElementById("tests");el.innerHTML="";testItems.forEach((t,i)=>{const label=document.createElement("label");label.className="test-row";const cb=document.createElement("input");cb.type="checkbox";cb.checked=!!state.tests[i];cb.onchange=()=>{state.tests[i]=cb.checked;save()};const span=document.createElement("span");span.textContent=t;label.append(cb,span);el.append(label)})}
+function renderStats(){const vals=Object.values(state.checks),count=vals.filter(Boolean).length;const total=Object.values(sessions).reduce((n,s)=>n+s.items.length,0);const weekCount=Object.keys(state.checks).filter(k=>state.checks[k]&&k.startsWith("w"+state.week+"-")).length;document.getElementById("doneCount").textContent=count;const pct=Math.round(count/total*100);document.getElementById("weekProgress").textContent=pct+"%";document.getElementById("weekBar").style.width=pct+"%"}
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{state.day=b.dataset.day;save();renderSession()});
+document.getElementById("weeks").addEventListener("click",()=>{});
+document.getElementById("tests").addEventListener("change",save);
+let remaining=120,interval=null;const clock=document.getElementById("clock");function showTime(){clock.textContent=String(Math.floor(remaining/60)).padStart(2,"0")+":"+String(remaining%60).padStart(2,"0")}
+document.querySelectorAll("[data-time]").forEach(b=>b.onclick=()=>{remaining=Number(b.dataset.time);showTime()});
+document.getElementById("timerToggle").onclick=()=>{const b=document.getElementById("timerToggle");if(interval){clearInterval(interval);interval=null;b.textContent="Продовжити"}else{b.textContent="Пауза";interval=setInterval(()=>{remaining--;showTime();if(remaining<=0){clearInterval(interval);interval=null;b.textContent="Старт";if("vibrate"in navigator)navigator.vibrate(200)}},1000)}};
+document.getElementById("timerReset").onclick=()=>{if(interval)clearInterval(interval);interval=null;remaining=120;showTime();document.getElementById("timerToggle").textContent="Старт"};
+renderWeeks();renderSession();renderTests();renderStats();showTime();
+</script>
+</body></html>
